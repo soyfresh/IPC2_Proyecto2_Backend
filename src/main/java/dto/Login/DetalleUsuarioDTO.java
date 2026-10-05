@@ -10,4 +10,29 @@ package dto.Login;
  */
 public class DetalleUsuarioDTO {
     
+    private String nombreCompleto;
+    private String rol;
+
+    public DetalleUsuarioDTO(String nombreCompleto, String rol) {
+        this.nombreCompleto = nombreCompleto;
+        this.rol = rol;
+    }
+
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+    
+    
 }
