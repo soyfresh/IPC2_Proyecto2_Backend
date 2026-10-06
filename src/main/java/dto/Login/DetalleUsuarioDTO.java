@@ -10,12 +10,21 @@ package dto.Login;
  */
 public class DetalleUsuarioDTO {
     
+    private String dpi_cui;
     private String nombreCompleto;
     private String rol;
 
     public DetalleUsuarioDTO(String nombreCompleto, String rol) {
         this.nombreCompleto = nombreCompleto;
         this.rol = rol;
+    }
+
+    public String getDpi_cui() {
+        return dpi_cui;
+    }
+
+    public void setDpi_cui(String dpi_cui) {
+        this.dpi_cui = dpi_cui;
     }
 
     public String getNombreCompleto() {

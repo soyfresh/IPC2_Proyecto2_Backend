@@ -25,7 +25,7 @@ public class UsuarioDAO {
         this.connection = connection;
     }
     
-    public static final String BUSCAR_POR_USUARIO="SELECT * FROM usuario WHERE username=?";
+    public static final String BUSCAR_POR_USUARIO="SELECT * FROM usuario WHERE username=? ? AND estado='ACTIVO";
     
     
     public static final String OBTENER_DETALLE_POR_ID="""
@@ -48,7 +48,7 @@ public class UsuarioDAO {
     public static final String CAMBIAR_ESTADO="UPDATE usuario SET estado=? WHERE id_usuario=?";
     
     
-    
+   
     
     public UsuarioPOJO buscarPorUsuario(String usuarioIng) throws SQLException{
         try(PreparedStatement ps = connection.prepareStatement(BUSCAR_POR_USUARIO)){
@@ -75,6 +75,7 @@ public class UsuarioDAO {
                     
                     String nombreEmpleado = rs.getString("emp_nombres");
                     if(nombreEmpleado != null){
+                        
                         String nombreCompleto = nombreEmpleado+" "+rs.getString("emp_apellidos");
                         String rol = rs.getString("rol");
                         return new DetalleUsuarioDTO(nombreCompleto, rol);
@@ -82,6 +83,7 @@ public class UsuarioDAO {
                   
                     String estNombres = rs.getString("est_nombres");
                     if (estNombres != null) {
+                        
                         String nombreCompleto = estNombres + " " + rs.getString("est_apellidos");
                         return new DetalleUsuarioDTO(nombreCompleto, "ESTUDIANTE");
                     }
@@ -89,7 +91,7 @@ public class UsuarioDAO {
             }
             
         }
-        return new DetalleUsuarioDTO(" ", "USUARIO");
+        return null;
     }
     
     public boolean actualizarContrasena(int idUsuario, String nuevaConstraseña) throws SQLException{
